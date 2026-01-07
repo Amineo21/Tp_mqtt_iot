@@ -25,9 +25,11 @@ wss.on('connection', ws => {
 
 // Fonction pour envoyer un message à tous les clients WebSocket connectés
 function broadcast(message) {
+    console.log(`Broadcasting message to ${wss.clients.size} WebSocket clients.`); // Ajoutez cette ligne
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
             client.send(message);
+            console.log(`Sent message to client: ${message.substring(0, 100)}...`); // Ajoutez cette ligne pour voir les 100 premiers caractères
         }
     });
 }
@@ -44,6 +46,7 @@ mqttClient.on('connect', () => {
         } else {
             console.log(`Subscribed to MQTT topic: ${MQTT_TOPIC_TELEMETRY}`);
         }
+        
     });
     // S'abonner aux topics Flipper (pour le bonus)
     mqttClient.subscribe(MQTT_TOPIC_FLIPPER, err => {
@@ -56,7 +59,7 @@ mqttClient.on('connect', () => {
 });
 
 mqttClient.on('message', (topic, message) => {
-    // console.log(`MQTT message received on topic "${topic}": ${message.toString()}`);
+    console.log(`MQTT message received on topic "${topic}": ${message.toString()}`);
     // Transmettre le message MQTT aux clients WebSocket
     broadcast(JSON.stringify({ topic, payload: message.toString() }));
 });
