@@ -1,0 +1,54 @@
+{
+  "classroom": {
+    "telemetry": {
+      "description": "Exemple de payload pour classroom/<deviceId>/telemetry",
+      "payload": {
+        "temperature": 23.5,
+        "humidity": 60.2,
+        "pressure": 1012.3,
+        "battery": 85,
+        "timestamp": "2023-10-27T10:30:00Z"
+      }
+    },
+    "events": {
+      "description": "Exemple de payload pour classroom/<deviceId>/events",
+      "payload": {
+        "type": "boot",
+        "message": "ESP32 started successfully",
+        "timestamp": "2023-10-27T10:29:55Z"
+      }
+    },
+    "cmd": {
+      "description": "Exemple de payload pour classroom/<deviceId>/cmd",
+      "payload": {
+        "action": "reboot",
+        "delay": 5
+      }
+    },
+    "status": {
+      "description": "Exemple de payload pour classroom/<deviceId>/status",
+      "payload": {
+        "state": "online",
+        "uptime_seconds": 3600
+      }
+    }
+  },
+  "flipper": {
+    "button_press": {
+      "description": "Exemple de payload pour flipper/<deviceId>/button_press",
+      "payload": {
+        "button": "OK",
+        "action": "press",
+        "timestamp": "2023-10-27T10:35:12Z"
+      }
+    },
+    "NFC_read": {
+      "description": "Exemple de payload pour flipper/<deviceId>/NFC_read",
+      "payload": {
+        "card_uid": "04A1B2C3D4E5F6",
+        "card_type": "Mifare Classic 1K",
+        "timestamp": "2023-10-27T10:36:45Z"
+      }
+    }
+  }
+}
